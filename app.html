@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>도서당 설치</title>
+<!-- 공유 카드 QR이 가리키는 설치 안내 페이지 (apps/mobile/src/features/share/InstallQR.tsx).
+     iPhone은 App Store로 바로 보낸다. Android는 Play 스토어 공개 전이라 안내만 — 공개되면 ANDROID_OPEN = true. -->
+<style>
+:root{--bg:#faf5ea;--text:#3b2f22;--text2:#7a6a55;--btn:#3b2f22;--btnText:#faf5ea;--line:#e6dcc8}
+@media (prefers-color-scheme:dark){:root{--bg:#000;--text:#f5f5f5;--text2:#aaa;--btn:#f5f5f5;--btnText:#000;--line:#262626}}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}
+main{max-width:420px;margin:0 auto;padding:56px 16px;text-align:center}
+h1{font-size:28px;margin:0}
+.sub{color:var(--text2);margin:6px 0 32px}
+a.btn{display:block;padding:14px;border-radius:12px;background:var(--btn);color:var(--btnText);text-decoration:none;font-weight:700;margin:10px 0}
+.note{color:var(--text2);font-size:14px;border-top:1px solid var(--line);margin-top:28px;padding-top:16px}
+</style></head>
+<body><main>
+<h1>도서당 圖書堂</h1>
+<p class="sub">독서 기록 · 책 추천 · 아이와 함께 읽는 독서 앱</p>
+<a class="btn" href="https://apps.apple.com/kr/app/id6832539386">iPhone · App Store에서 받기</a>
+<a class="btn" id="android" href="https://play.google.com/store/apps/details?id=kr.readdeck.app">Android · Play 스토어에서 받기</a>
+<p class="note" id="androidNote">Android 앱은 곧 Play 스토어에 열려요.</p>
+</main>
+<script>
+var ANDROID_OPEN = false;
+var ua = navigator.userAgent || '';
+if (!ANDROID_OPEN) { document.getElementById('android').style.display = 'none'; } else { document.getElementById('androidNote').style.display = 'none'; }
+if (/iPhone|iPad|iPod/.test(ua)) location.replace('https://apps.apple.com/kr/app/id6832539386');
+else if (ANDROID_OPEN && /Android/.test(ua)) location.replace('https://play.google.com/store/apps/details?id=kr.readdeck.app');
+</script>
+</body></html>
